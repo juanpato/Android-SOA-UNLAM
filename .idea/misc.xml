@@ -6,8 +6,10 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.18885869565217392" />
         <entry key="app/src/main/res/layout/activity_login_historic.xml" value="0.11277173913043478" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/activity_pantalla.xml" value="0.14387031408308004" />
         <entry key="app/src/main/res/layout/activity_password_login.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/activity_password_login2.xml" value="0.14387031408308004" />
+        <entry key="app/src/main/res/layout/activity_pokemon.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/loading_dialog.xml" value="0.1" />
       </map>

@@ -56,7 +56,7 @@ public class PasswordLoginActivity extends AppCompatActivity implements Password
 
         presenter.registerLoginEvent(response);
 
-        presenter.saveLoginHistoric(response);
+        presenter.saveLoginHistoric(email.getText().toString(), response);
 
         Intent intent = new Intent(this, LoginHistoricActivity.class);
         intent.putExtra(TOKEN_KEY, response.getToken());

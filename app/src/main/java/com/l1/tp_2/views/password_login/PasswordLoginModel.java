@@ -32,7 +32,6 @@ public class PasswordLoginModel implements PasswordLoginContract.Model {
     @Override
     public void login(String email, String password) {
         loginClient.login(email, password);
-
     }
 
     @Override
@@ -42,7 +41,6 @@ public class PasswordLoginModel implements PasswordLoginContract.Model {
                 .setDescription("Login successful");
         sendEventClient.sendEvent(response.getToken(), event);
     }
-
 
     @Override
     public List<LoginHistoric> getLoginHistoric() {

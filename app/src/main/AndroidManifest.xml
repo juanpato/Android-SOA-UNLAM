@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -17,24 +18,26 @@
         android:theme="@style/Theme.Tp2"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
         <activity
-            android:name=".views.password_login.PasswordLoginActivity"
-            android:exported="true">
+            android:name=".views.pokemon.PokemonActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name=".views.password_login.PasswordLoginActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
             android:name=".views.register.RegisterActivity"
-            android:exported="true">
-
-        </activity>
-        <activity android:name=".views.login_historic.LoginHistoricActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
+        <activity
+            android:name=".views.login_historic.LoginHistoricActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

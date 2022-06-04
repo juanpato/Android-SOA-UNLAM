@@ -33,12 +33,16 @@ public class PasswordLoginPresenter implements PasswordLoginContract.Presenter {
     }
 
     @Override
-    public void saveLoginHistoric(UserResponse response) {
+    public void saveLoginHistoric(String email, UserResponse response) {
         List<LoginHistoric> loginHistoric = model.getLoginHistoric();
 
-        // Uncomment when the api respond the user data
-        // loginHistoric.add(new LoginHistoric(response.getUser().getName(), simpleDateFormat.format(new Date())));
-        loginHistoric.add(new LoginHistoric("Gonzalo Rodriguez", simpleDateFormat.format(new Date())));
+        for (int i = loginHistoric.size() - 1; i >= 0; i--) {
+            if (email.equals(loginHistoric.get(i).getFullName())) {
+                loginHistoric.remove(i);
+            }
+        }
+
+        loginHistoric.add(new LoginHistoric(email, simpleDateFormat.format(new Date())));
 
         model.saveLoginHistoric(loginHistoric);
     }

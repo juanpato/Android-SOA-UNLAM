@@ -28,7 +28,7 @@ public interface PasswordLoginContract {
 
         void registerLoginEvent(UserResponse response);
 
-        void saveLoginHistoric(UserResponse response);
+        void saveLoginHistoric(String email, UserResponse response);
     }
 
 }

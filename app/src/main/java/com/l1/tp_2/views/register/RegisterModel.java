@@ -27,7 +27,7 @@ public class RegisterModel implements RegisterContract.Model {
     @Override
     public void registerRegisterEvent(UserResponse response) {
         Event event = new Event()
-                .setTypeEvents(TypeEvent.LOGIN)
+                .setTypeEvents(TypeEvent.REGISTER)
                 .setDescription("Register successful");
         sendEventClient.sendEvent(response.getToken(), event);
     }
