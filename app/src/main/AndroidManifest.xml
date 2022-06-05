@@ -30,7 +30,6 @@
         <activity
             android:name=".views.password_login.PasswordLoginActivity"
             android:exported="true">
-
         </activity>
         <activity
             android:name=".views.register.RegisterActivity"

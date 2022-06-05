@@ -2,5 +2,7 @@ package com.l1.tp_2.entities;
 
 public enum TypeEvent {
     LOGIN,
-    REGISTER;
+    REGISTER,
+    SEARCH_POKEMON,
+    SHAKE;
 }

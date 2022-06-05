@@ -10,13 +10,13 @@ import android.widget.TextView;
 import com.l1.tp_2.R;
 import com.l1.tp_2.entities.UserResponse;
 import com.l1.tp_2.utils.LoadingDialog;
+import com.l1.tp_2.views.BasicActivity;
 import com.l1.tp_2.views.login_historic.LoginHistoricActivity;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class RegisterActivity extends AppCompatActivity implements RegisterContract.View {
+public class RegisterActivity extends BasicActivity implements RegisterContract.View {
 
-    public static final String TOKEN_KEY = "token";
     private RegisterContract.Presenter presenter;
 
     private TextView name;
@@ -47,6 +47,11 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
         button = findViewById(R.id.confirm_button);
 
         button.setOnClickListener(view -> {
+            if (!checkInternetConnection()) {
+                setErrorMessage(errorMessage,"No hay conexión a internet");
+                return;
+            }
+
             errorMessage.setTextColor(Color.WHITE);
             emailText.setBackgroundResource(R.color.white);
             password.setBackgroundResource(R.color.white);
@@ -77,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     @Override
     public void onError() {
         loadingDialog.dismissLoading();
-        errorMessage.setTextColor(Color.RED);
+        setErrorMessage(errorMessage,"Error en los datos, reviselos e intente nuevamente");
         emailText.setBackgroundResource(R.color.red);
         password.setBackgroundResource(R.color.red);
     }

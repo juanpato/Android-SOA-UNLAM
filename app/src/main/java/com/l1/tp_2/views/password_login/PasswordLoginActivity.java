@@ -13,9 +13,10 @@ import android.widget.TextView;
 import com.l1.tp_2.R;
 import com.l1.tp_2.entities.UserResponse;
 import com.l1.tp_2.utils.LoadingDialog;
+import com.l1.tp_2.views.BasicActivity;
 import com.l1.tp_2.views.login_historic.LoginHistoricActivity;
 
-public class PasswordLoginActivity extends AppCompatActivity implements PasswordLoginContract.View {
+public class PasswordLoginActivity extends BasicActivity implements PasswordLoginContract.View {
 
     public static final String LOGIN_HISTORY_PREFERENCES = "login_history_preferences";
 
@@ -42,6 +43,11 @@ public class PasswordLoginActivity extends AppCompatActivity implements Password
         error = findViewById(R.id.error);
         error.setTextColor(Color.WHITE);
         button.setOnClickListener(view -> {
+            if (!checkInternetConnection()) {
+                setErrorMessage(error,"No hay conexión a internet");
+                return;
+            }
+
             error.setTextColor(Color.WHITE);
             email.setBackgroundResource(R.color.white);
             password.setBackgroundResource(R.color.white);
@@ -66,7 +72,7 @@ public class PasswordLoginActivity extends AppCompatActivity implements Password
     @Override
     public void onError() {
         loadingDialog.dismissLoading();
-        error.setTextColor(Color.RED);
+        setErrorMessage(error, "Mail y/o contraseña incorrecta");
         email.setBackgroundResource(R.color.red);
         password.setBackgroundResource(R.color.red);
     }

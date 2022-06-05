@@ -15,10 +15,11 @@ import android.widget.TextView;
 
 import com.l1.tp_2.R;
 import com.l1.tp_2.entities.LoginHistoric;
+import com.l1.tp_2.views.BasicActivity;
 
 import java.util.List;
 
-public class LoginHistoricActivity extends AppCompatActivity implements LoginHistoricContract.View {
+public class LoginHistoricActivity extends BasicActivity implements LoginHistoricContract.View {
 
     private LoginHistoricContract.Presenter presenter;
     private TableLayout mTableLayout;
