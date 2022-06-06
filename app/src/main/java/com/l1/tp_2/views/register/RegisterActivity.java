@@ -2,7 +2,9 @@ package com.l1.tp_2.views.register;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,13 +18,15 @@ import com.l1.tp_2.views.password_login.PasswordLoginActivity;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Optional;
+
 public class RegisterActivity extends BasicActivity implements RegisterContract.View {
 
     private RegisterContract.Presenter presenter;
 
     private TextView name;
     private TextView lastnameText;
-    private TextView emailText;
+    private TextView email;
     private TextView dniText;
     private TextView password;
     private TextView errorMessage;
@@ -30,6 +34,7 @@ public class RegisterActivity extends BasicActivity implements RegisterContract.
 
     private LoadingDialog loadingDialog;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,12 +45,22 @@ public class RegisterActivity extends BasicActivity implements RegisterContract.
 
         name = findViewById(R.id.name_text);
         lastnameText = findViewById(R.id.lastname_text);
-        emailText = findViewById(R.id.email_text);
+        email = findViewById(R.id.email_text);
         dniText = findViewById(R.id.dni_text);
         password = findViewById(R.id.password);
         errorMessage = findViewById(R.id.error_message);
 
         button = findViewById(R.id.confirm_button);
+
+        String emailText = (String) Optional.ofNullable(this.getIntent().getExtras())
+                .map(extras -> extras.get(EMAIL_KEY))
+                .orElse("");
+
+        if (!"".equals(emailText)) {
+            email.setText(emailText);
+            email.setFocusable(false);
+            email.setBackgroundResource(R.color.grey);
+        }
 
         button.setOnClickListener(view -> {
             if (!checkInternetConnection()) {
@@ -54,7 +69,6 @@ public class RegisterActivity extends BasicActivity implements RegisterContract.
             }
 
             errorMessage.setTextColor(Color.WHITE);
-            emailText.setBackgroundResource(R.color.white);
             password.setBackgroundResource(R.color.white);
             loadingDialog.showLoading();
 
@@ -62,7 +76,7 @@ public class RegisterActivity extends BasicActivity implements RegisterContract.
             presenter.onButtonClick(
                     name.getText().toString(),
                     lastnameText.getText().toString(),
-                    emailText.getText().toString(),
+                    email.getText().toString(),
                     StringUtils.isNotEmpty(dni) ? Integer.valueOf(dni) : null,
                     password.getText().toString()
             );
@@ -83,7 +97,7 @@ public class RegisterActivity extends BasicActivity implements RegisterContract.
     public void onError() {
         loadingDialog.dismissLoading();
         setErrorMessage(errorMessage,"Error en los datos, reviselos e intente nuevamente");
-        emailText.setBackgroundResource(R.color.red);
+        dniText.setBackgroundResource(R.color.red);
         password.setBackgroundResource(R.color.red);
     }
 }

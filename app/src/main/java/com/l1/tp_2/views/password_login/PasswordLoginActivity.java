@@ -5,7 +5,9 @@ import static com.l1.tp_2.views.register.RegisterActivity.TOKEN_KEY;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,6 +19,8 @@ import com.l1.tp_2.views.BasicActivity;
 import com.l1.tp_2.views.login_historic.LoginHistoricActivity;
 import com.l1.tp_2.views.pokemon.PokemonActivity;
 import com.l1.tp_2.views.register.RegisterActivity;
+
+import java.util.Optional;
 
 public class PasswordLoginActivity extends BasicActivity implements PasswordLoginContract.View {
 
@@ -32,6 +36,7 @@ public class PasswordLoginActivity extends BasicActivity implements PasswordLogi
 
     private LoadingDialog loadingDialog;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +48,17 @@ public class PasswordLoginActivity extends BasicActivity implements PasswordLogi
         confirmButton = findViewById(R.id.button);
         registerButton = findViewById(R.id.register);
         email = findViewById(R.id.email);
+
+        String emailText = (String) Optional.ofNullable(this.getIntent().getExtras())
+                .map(extras -> extras.get(EMAIL_KEY))
+                .orElse("");
+
+        if (!"".equals(emailText)) {
+            email.setText(emailText);
+            email.setFocusable(false);
+            email.setBackgroundResource(R.color.grey);
+        }
+
         password = findViewById(R.id.password);
         error = findViewById(R.id.error);
         error.setTextColor(Color.WHITE);
@@ -61,6 +77,7 @@ public class PasswordLoginActivity extends BasicActivity implements PasswordLogi
 
         registerButton.setOnClickListener(view -> {
             Intent intent = new Intent(this, RegisterActivity.class);
+            intent.putExtra(EMAIL_KEY, emailText);
             startActivity(intent);
         });
     }

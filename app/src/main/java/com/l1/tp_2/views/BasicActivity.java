@@ -10,6 +10,7 @@ import android.widget.TextView;
 public abstract class BasicActivity extends AppCompatActivity {
 
     public static final String TOKEN_KEY = "token";
+    public static final String EMAIL_KEY = "email";
 
     protected boolean checkInternetConnection() {
         ConnectivityManager connectivityManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
