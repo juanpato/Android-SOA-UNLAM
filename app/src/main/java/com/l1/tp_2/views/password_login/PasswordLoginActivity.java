@@ -15,6 +15,7 @@ import com.l1.tp_2.entities.UserResponse;
 import com.l1.tp_2.utils.LoadingDialog;
 import com.l1.tp_2.views.BasicActivity;
 import com.l1.tp_2.views.login_historic.LoginHistoricActivity;
+import com.l1.tp_2.views.pokemon.PokemonActivity;
 import com.l1.tp_2.views.register.RegisterActivity;
 
 public class PasswordLoginActivity extends BasicActivity implements PasswordLoginContract.View {
@@ -72,7 +73,7 @@ public class PasswordLoginActivity extends BasicActivity implements PasswordLogi
 
         presenter.saveLoginHistoric(email.getText().toString(), response);
 
-        Intent intent = new Intent(this, LoginHistoricActivity.class);
+        Intent intent = new Intent(this, PokemonActivity.class);
         intent.putExtra(TOKEN_KEY, response.getToken());
         startActivity(intent);
     }
