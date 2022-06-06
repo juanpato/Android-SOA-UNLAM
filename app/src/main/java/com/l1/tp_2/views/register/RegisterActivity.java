@@ -12,6 +12,7 @@ import com.l1.tp_2.entities.UserResponse;
 import com.l1.tp_2.utils.LoadingDialog;
 import com.l1.tp_2.views.BasicActivity;
 import com.l1.tp_2.views.login_historic.LoginHistoricActivity;
+import com.l1.tp_2.views.password_login.PasswordLoginActivity;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -74,8 +75,7 @@ public class RegisterActivity extends BasicActivity implements RegisterContract.
 
         presenter.registerRegisterEvent(response);
 
-        Intent intent = new Intent(this, LoginHistoricActivity.class);
-        intent.putExtra(TOKEN_KEY, response.getToken());
+        Intent intent = new Intent(this, PasswordLoginActivity.class);
         startActivity(intent);
     }
 

@@ -24,12 +24,8 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".MailSenderActivity"
-            android:exported="false" />
-        <activity
             android:name=".views.pokemon.PokemonActivity"
             android:exported="true">
-
         </activity>
         <activity
             android:name=".views.password_login.PasswordLoginActivity"
