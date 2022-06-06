@@ -15,6 +15,7 @@ import com.l1.tp_2.entities.UserResponse;
 import com.l1.tp_2.utils.LoadingDialog;
 import com.l1.tp_2.views.BasicActivity;
 import com.l1.tp_2.views.login_historic.LoginHistoricActivity;
+import com.l1.tp_2.views.register.RegisterActivity;
 
 public class PasswordLoginActivity extends BasicActivity implements PasswordLoginContract.View {
 
@@ -25,7 +26,8 @@ public class PasswordLoginActivity extends BasicActivity implements PasswordLogi
     private TextView email;
     private TextView password;
     private TextView error;
-    private Button button;
+    private Button confirmButton;
+    private Button registerButton;
 
     private LoadingDialog loadingDialog;
 
@@ -37,12 +39,13 @@ public class PasswordLoginActivity extends BasicActivity implements PasswordLogi
 
         loadingDialog = new LoadingDialog(this);
 
-        button = findViewById(R.id.button);
+        confirmButton = findViewById(R.id.button);
+        registerButton = findViewById(R.id.register);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         error = findViewById(R.id.error);
         error.setTextColor(Color.WHITE);
-        button.setOnClickListener(view -> {
+        confirmButton.setOnClickListener(view -> {
             if (!checkInternetConnection()) {
                 setErrorMessage(error,"No hay conexión a internet");
                 return;
@@ -53,6 +56,11 @@ public class PasswordLoginActivity extends BasicActivity implements PasswordLogi
             password.setBackgroundResource(R.color.white);
             loadingDialog.showLoading();
             presenter.onButtonClick(email.getText().toString(), password.getText().toString());
+        });
+
+        registerButton.setOnClickListener(view -> {
+            Intent intent = new Intent(this, RegisterActivity.class);
+            startActivity(intent);
         });
     }
 
