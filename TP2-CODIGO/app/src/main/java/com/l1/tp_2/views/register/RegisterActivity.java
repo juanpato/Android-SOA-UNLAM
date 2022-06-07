@@ -88,6 +88,7 @@ public class RegisterActivity extends BasicActivity implements RegisterContract.
         presenter.registerRegisterEvent(response);
 
         Intent intent = new Intent(this, PasswordLoginActivity.class);
+        intent.putExtra(EMAIL_KEY, email.getText().toString());
         startActivity(intent);
     }
 

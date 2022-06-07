@@ -32,7 +32,7 @@ public class LoginClient extends RetrofitClient<Login> {
 
     public void login(String email, String password) {
         Call<UserResponse> call = getClient().login(new User()
-                .setEnv(Env.DEV)
+                .setEnv(Env.PROD)
                 .setEmail(email)
                 .setPassword(password));
 
