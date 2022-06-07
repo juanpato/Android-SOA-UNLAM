@@ -25,7 +25,6 @@ public abstract class BasicActivity extends AppCompatActivity {
     protected void setErrorMessage(TextView errorField, String message) {
         errorField.setText(message);
         errorField.setTextColor(Color.RED);
-
     }
 
 }

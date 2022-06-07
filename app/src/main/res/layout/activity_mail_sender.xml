@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".views.mailVerification.MailSenderActivity">
 
+    <TextView
+        android:id="@+id/errorFA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="103dp"
+        android:text="El codigo no coincide"
+        app:layout_constraintTop_toTopOf="@+id/codigoText"
+        tools:layout_editor_absoluteX="137dp" />
+
     <Button
         android:id="@+id/send"
         android:layout_width="wrap_content"
