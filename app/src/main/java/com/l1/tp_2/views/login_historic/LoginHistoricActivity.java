@@ -5,7 +5,6 @@ import static com.l1.tp_2.views.password_login.PasswordLoginActivity.LOGIN_HISTO
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.LinearLayout;

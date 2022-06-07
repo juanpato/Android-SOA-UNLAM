@@ -14,14 +14,17 @@ public interface PokemonContract {
         void getPokemon(Integer id);
 
         void registerPokemonEvent(PokemonResponse response, String token);
+
         void registerAccelerometerEvent(PokemonResponse response, String token);
     }
 
     interface Presenter {
         void onButtonClick();
+
         void onShake();
 
         void registerShakeEvent(PokemonResponse response, String token);
+
         void registerPokemonEvent(PokemonResponse response, String token);
     }
 

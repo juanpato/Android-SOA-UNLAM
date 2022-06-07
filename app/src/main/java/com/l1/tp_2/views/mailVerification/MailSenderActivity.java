@@ -2,10 +2,7 @@ package com.l1.tp_2.views.mailVerification;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -13,7 +10,7 @@ import com.l1.tp_2.R;
 import com.l1.tp_2.views.BasicActivity;
 import com.l1.tp_2.views.password_login.PasswordLoginActivity;
 
-public class MailSenderActivity extends BasicActivity implements MailSenderContract.View{
+public class MailSenderActivity extends BasicActivity implements MailSenderContract.View {
     private TextView emailTo;
     private TextView codigoVerif;
     private String codigo;
@@ -21,35 +18,31 @@ public class MailSenderActivity extends BasicActivity implements MailSenderContr
     private Button verifBtn;
     private TextView error;
     private MailSenderContract.Presenter presenter;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mail_sender);
         error = findViewById(R.id.errorFA);
         error.setTextColor(Color.WHITE);
+        codigo = "";
         presenter = new MailSenderPresenter(this);
-        codigo = presenter.GeneratePassword();
         send = (Button) this.findViewById(R.id.send);
         verifBtn = (Button) this.findViewById(R.id.verifBtn);
         emailTo = this.findViewById(R.id.emailTo);
         codigoVerif = this.findViewById(R.id.codigoText);
 
 
-        verifBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (codigo.equals(codigoVerif.getText().toString())) {
-                    openNewActivity();
-                } else {
-                    onError();
-                }
+        verifBtn.setOnClickListener(v -> {
+            if (!codigo.isEmpty() && codigo.equals(codigoVerif.getText().toString())) {
+                openNewActivity();
+            } else {
+                onError();
             }
         });
-        send.setOnClickListener(new View.OnClickListener() {
-
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            public void onClick(View v) {
-                codigo = presenter.SendEmail(emailTo.getText().toString());
-            }
+        send.setOnClickListener(v -> {
+            DisableButton();
+            presenter.sendEmail(emailTo.getText().toString());
         });
 
     }
@@ -61,9 +54,9 @@ public class MailSenderActivity extends BasicActivity implements MailSenderContr
     }
 
     @Override
-    public void onSuccess() {
+    public void onSuccess(String code) {
+        this.codigo = code;
         setErrorMessage(error, "");
-        DisableButton();
     }
 
     public void openNewActivity() {
@@ -72,9 +65,10 @@ public class MailSenderActivity extends BasicActivity implements MailSenderContr
         startActivity(intent);
     }
 
-    public void EnableButton(){
+    public void EnableButton() {
         send.setEnabled(true);
     }
+
     public void DisableButton() {
         send.setEnabled(false);
     }

@@ -1,14 +1,11 @@
 package com.l1.tp_2.views.password_login;
 
-import static com.l1.tp_2.views.register.RegisterActivity.TOKEN_KEY;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -16,7 +13,6 @@ import com.l1.tp_2.R;
 import com.l1.tp_2.entities.UserResponse;
 import com.l1.tp_2.utils.LoadingDialog;
 import com.l1.tp_2.views.BasicActivity;
-import com.l1.tp_2.views.login_historic.LoginHistoricActivity;
 import com.l1.tp_2.views.pokemon.PokemonActivity;
 import com.l1.tp_2.views.register.RegisterActivity;
 
@@ -64,7 +60,7 @@ public class PasswordLoginActivity extends BasicActivity implements PasswordLogi
         error.setTextColor(Color.WHITE);
         confirmButton.setOnClickListener(view -> {
             if (!checkInternetConnection()) {
-                setErrorMessage(error,"No hay conexión a internet");
+                setErrorMessage(error, "No hay conexión a internet");
                 return;
             }
 

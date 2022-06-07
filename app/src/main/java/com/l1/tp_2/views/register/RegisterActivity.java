@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -13,7 +12,6 @@ import com.l1.tp_2.R;
 import com.l1.tp_2.entities.UserResponse;
 import com.l1.tp_2.utils.LoadingDialog;
 import com.l1.tp_2.views.BasicActivity;
-import com.l1.tp_2.views.login_historic.LoginHistoricActivity;
 import com.l1.tp_2.views.password_login.PasswordLoginActivity;
 
 import org.apache.commons.lang3.StringUtils;
@@ -64,7 +62,7 @@ public class RegisterActivity extends BasicActivity implements RegisterContract.
 
         button.setOnClickListener(view -> {
             if (!checkInternetConnection()) {
-                setErrorMessage(errorMessage,"No hay conexión a internet");
+                setErrorMessage(errorMessage, "No hay conexión a internet");
                 return;
             }
 
@@ -96,7 +94,7 @@ public class RegisterActivity extends BasicActivity implements RegisterContract.
     @Override
     public void onError() {
         loadingDialog.dismissLoading();
-        setErrorMessage(errorMessage,"Error en los datos, reviselos e intente nuevamente");
+        setErrorMessage(errorMessage, "Error en los datos, reviselos e intente nuevamente");
         dniText.setBackgroundResource(R.color.red);
         password.setBackgroundResource(R.color.red);
     }
