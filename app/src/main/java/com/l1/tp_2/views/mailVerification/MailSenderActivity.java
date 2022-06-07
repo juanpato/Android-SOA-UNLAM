@@ -25,15 +25,15 @@ public class MailSenderActivity extends BasicActivity implements MailSenderContr
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         error = findViewById(R.id.errorFA);
+        presenter = new MailSenderPresenter(this);
         //error.setTextColor(Color.WHITE);
         setContentView(R.layout.activity_mail_sender);
-        //codigo = presenter.GeneratePassword();
+        codigo = presenter.GeneratePassword();
         send = (Button) this.findViewById(R.id.send);
         verifBtn = (Button) this.findViewById(R.id.verifBtn);
         emailTo = this.findViewById(R.id.emailTo);
         codigoVerif = this.findViewById(R.id.codigoText);
 
-        presenter = new MailSenderPresenter(this);
 
         verifBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
