@@ -74,10 +74,12 @@ public class MailSenderActivity extends BasicActivity implements MailSenderContr
     @Override
     public void EnableButton(){
         send.setEnabled(true);
+        setErrorMessage(error, "Los codigos no coinciden");
     }
     @Override
     public void DisableButton() {
         send.setEnabled(false);
+        setErrorMessage(error, "");
     }
 
 
