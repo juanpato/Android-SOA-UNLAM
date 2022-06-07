@@ -24,10 +24,10 @@ public class MailSenderActivity extends BasicActivity implements MailSenderContr
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        error = findViewById(R.id.errorFA);
-        presenter = new MailSenderPresenter(this);
-        //error.setTextColor(Color.WHITE);
         setContentView(R.layout.activity_mail_sender);
+        error = findViewById(R.id.errorFA);
+        error.setTextColor(Color.WHITE);
+        presenter = new MailSenderPresenter(this);
         codigo = presenter.GeneratePassword();
         send = (Button) this.findViewById(R.id.send);
         verifBtn = (Button) this.findViewById(R.id.verifBtn);
