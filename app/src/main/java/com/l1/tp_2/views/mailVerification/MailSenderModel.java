@@ -32,7 +32,7 @@ public class MailSenderModel implements MailSenderContract.Model {
 
                     onSuccess.accept(code);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Log.e("SendMail", e.getMessage(), e);
                 }
             });
         } catch (Exception e) {
