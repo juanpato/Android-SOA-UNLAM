@@ -10,8 +10,6 @@ public interface MailSenderContract {
     interface View {
         void onError();
         void onSuccess();
-        void EnableButton();
-        void DisableButton();
     }
 
     interface Model {

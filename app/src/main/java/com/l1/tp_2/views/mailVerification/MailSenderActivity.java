@@ -40,7 +40,7 @@ public class MailSenderActivity extends BasicActivity implements MailSenderContr
                 if (codigo.equals(codigoVerif.getText().toString())) {
                     openNewActivity();
                 } else {
-                    EnableButton();
+                    onError();
                 }
             }
         });
@@ -57,13 +57,13 @@ public class MailSenderActivity extends BasicActivity implements MailSenderContr
     @Override
     public void onError() {
         setErrorMessage(error, "Los codigos no coinciden");
-        codigoVerif.setBackgroundResource(R.color.red);
+        EnableButton();
     }
 
     @Override
     public void onSuccess() {
         setErrorMessage(error, "");
-        codigoVerif.setBackgroundResource(R.color.white);
+        DisableButton();
     }
 
     public void openNewActivity() {
@@ -71,15 +71,12 @@ public class MailSenderActivity extends BasicActivity implements MailSenderContr
         intent.putExtra(EMAIL_KEY, emailTo.getText().toString());
         startActivity(intent);
     }
-    @Override
+
     public void EnableButton(){
         send.setEnabled(true);
-        setErrorMessage(error, "Los codigos no coinciden");
     }
-    @Override
     public void DisableButton() {
         send.setEnabled(false);
-        setErrorMessage(error, "");
     }
 
 

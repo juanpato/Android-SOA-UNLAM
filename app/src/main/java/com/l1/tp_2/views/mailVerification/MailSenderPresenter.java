@@ -12,12 +12,11 @@ import java.util.concurrent.CompletableFuture;
 
 public class MailSenderPresenter implements MailSenderContract.Presenter{
     private final MailSenderContract.Model model;
-    private Run _disableButton;
+    private Run _onSuccess;
 
     public MailSenderPresenter(MailSenderContract.View view){
         this.model = new MailSenderModel();
-        Run _enableButton = view::EnableButton;
-        _disableButton = view::DisableButton;
+        _onSuccess = view::onSuccess;
     }
 
     @Override
@@ -37,7 +36,7 @@ public class MailSenderPresenter implements MailSenderContract.Presenter{
                             "Codigo de verificacion: " + password,
                             "soal1tp2@gmail.com",
                             emailTo);
-                    _disableButton.run();
+                    _onSuccess.run();
 
                 } catch (Exception e) {
                     e.printStackTrace();
