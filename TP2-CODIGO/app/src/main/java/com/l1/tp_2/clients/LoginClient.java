@@ -31,10 +31,11 @@ public class LoginClient extends RetrofitClient<Login> {
     }
 
     public void login(String email, String password) {
-        Call<UserResponse> call = getClient().login(new User()
+        User user = new User()
                 .setEnv(Env.PROD)
                 .setEmail(email)
-                .setPassword(password));
+                .setPassword(password);
+        Call<UserResponse> call = getClient().login(user);
 
         call.enqueue(new Callback<UserResponse>() {
             @SuppressLint("NewApi")

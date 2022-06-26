@@ -11,6 +11,6 @@ import retrofit2.http.POST;
 public interface SendEvent {
 
     @POST("api/api/event")
-    Call<EventResponse> sendEvent(@Header("token") String token, @Body Event event);
+    Call<EventResponse> sendEvent(@Header("Authorization") String token, @Body Event event);
 
 }

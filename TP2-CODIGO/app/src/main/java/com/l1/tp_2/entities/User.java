@@ -10,6 +10,10 @@ public class User {
     private Integer commission;
     private Integer group;
 
+    public Env getEnv() {
+        return env;
+    }
+
     public String getName() {
         return name;
     }

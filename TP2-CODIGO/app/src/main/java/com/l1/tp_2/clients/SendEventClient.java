@@ -30,7 +30,7 @@ public class SendEventClient extends RetrofitClient<SendEvent> {
     }
 
     public void sendEvent(String token, Event event) {
-        Call<EventResponse> call = getClient().sendEvent(token, event);
+        Call<EventResponse> call = getClient().sendEvent(String.format("Bearer %s", token), event);
 
         call.enqueue(new Callback<EventResponse>() {
             @SuppressLint("NewApi")
